@@ -19,10 +19,6 @@
 			<id>spigot-repo</id>
 			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
 		</repository>
-		<repository>
-			<id>CodeMC</id>
-			<url>https://repo.codemc.org/repository/maven-public</url>
-		</repository>
 	</repositories>
 
 	<dependencies>
@@ -31,12 +27,6 @@
 			<artifactId>spigot-api</artifactId>
 			<version>1.16.1-R0.1-SNAPSHOT</version>
 			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.bstats</groupId>
-			<artifactId>bstats-bukkit</artifactId>
-			<version>3.0.0</version>
-			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 
@@ -55,47 +45,9 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>3.2.4</version>
-				<configuration>
-					<relocations>
-						<relocation>
-							<pattern>org.bstats</pattern>
-							<shadedPattern>com.xxmicloxx.NoteBlockAPI</shadedPattern>
-						</relocation>
-					</relocations>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<defaultGoal>package</defaultGoal>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-				<includes>
-					<include>plugin.yml</include>
-				</includes>
-			</resource>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>false</filtering>
-				<excludes>
-					<exclude>**/*.java</exclude>
-					<exclude>plugin.yml</exclude>
-				</excludes>
-			</resource>
-		</resources>
 	</build>
 
 </project>
